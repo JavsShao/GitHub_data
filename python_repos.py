@@ -14,7 +14,15 @@ repo_dicts = response_dict['items'] # respose_dict字典存储在列表中, 列�
 print("Repositorise returned:", len(repo_dicts))
 
 # 研究第一个仓库
-repo_dicts = repo_dicts[0]
-print('\nKeys:', len(repo_dicts))
-for key in sorted(repo_dicts.keys()):
+repo_dict = repo_dicts[0]
+print("\nkeys:", len(repo_dicts))
+for key in sorted(repo_dict.keys()):
     print(key)
+
+print("\nSelected information about first repository:")
+for repo_dicts in repo_dicts:
+    print('\nName:', repo_dict['name'])
+    print('Owner:', repo_dict['owner']['login'])
+    print('Stars:', repo_dict['stargazers_count'])
+    print('Repository:', repo_dict['html_url'])
+    print('Description:', repo_dict['description'])

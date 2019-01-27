@@ -22,6 +22,18 @@ for repo_dict in repo_dicts:
 
 #可视化
 my_style = LS('#333366',base_style=LCS)
+
+my_config = pygal.Config()  # 创建Pygal类COnfig实例,通过修改my_config定制图标外观
+my_config.x_label_rotation = 45 # 让标签绕x轴旋转45度(x_label_rotatio=45)
+my_config.show_legend = False # 隐藏图例(show_legend=False)
+my_config.title_font_size = 24 # 图标标题
+my_config.label_font_size = 14 # 副标题
+my_config.major_label_font_size = 18 # 主标题(Y轴5000证书倍的刻度)
+my_config.truncate_label = 15 # 将较长的项目名缩短为15个字符
+my_config.show_y_guides = False # 隐藏图表中的水平线
+my_config.width = 1000 # 自定义宽度
+
+# 图表
 chart = pygal.Bar(style=my_style,x_label_rotation=45,show_legend=False)#创建条形图，让标签绕x轴旋转45度（x_label_rotation=45 ），隐藏图例（show_legend=False ）
 chart.title = 'Most-Starred Python Projects on GitHub'#指定标题
 chart.x_labels=names#横坐标标签

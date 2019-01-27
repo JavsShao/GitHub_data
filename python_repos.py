@@ -14,11 +14,15 @@ response_dict = r.json()
 print("Total resposerise:", response_dict['total_count'])   # 指出github包含多少个Python仓库
 # 探索有关仓库的信息
 repo_dicts = response_dict['items']
-print("Repositorise returned:", len(repo_dicts))        #response_dict字典存储在列表中，列表里每个字典都包含有关一个Python仓库的信息
-names, stars = [], []
+
+names, plot_dicts = [], []
 for repo_dict in repo_dicts:
     names.append(repo_dict['name'])
-    stars.append(repo_dict['stargazers_count'])
+    plot_dict = {
+        'value':repo_dict['stargazers_count'],
+        'label':str(repo_dict['description']),
+    }
+    plot_dicts.append(plot_dict)
 
 #可视化
 my_style = LS('#333366',base_style=LCS)
@@ -37,6 +41,6 @@ my_config.width = 1000 # 自定义宽度
 chart = pygal.Bar(style=my_style,x_label_rotation=45,show_legend=False)#创建条形图，让标签绕x轴旋转45度（x_label_rotation=45 ），隐藏图例（show_legend=False ）
 chart.title = 'Most-Starred Python Projects on GitHub'#指定标题
 chart.x_labels=names#横坐标标签
-chart.add('',stars)#添加数据，标签设置成空字符串
+chart.add('', plot_dicts)
 chart.render_to_file('python_repos.svg')
 

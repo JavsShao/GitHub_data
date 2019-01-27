@@ -6,12 +6,12 @@ my_style = LS('#333366', base_style = LCS)
 
 chart = pygal.Bar(style=my_style, x_label_rotatio=45, show_legend=False)
 
-chart.title = 'Python Projects'
+chart.title = 'Python 项目'
 chart.x_labels = ['httpie', 'django', 'flask']
 plot_dicts = [
-    {'value': 16101, 'label': 'Description of httpie.'},
-    {'value': 15028, 'label': 'Description of django.'},
-    {'value': 14798, 'label': 'Description of flask.'},
+    {'value': 16101, 'label': 'Httpie相关项目.'},
+    {'value': 15028, 'label': 'Django相关项目.'},
+    {'value': 14798, 'label': 'Flask相关项目.'},
 ]
 
 chart.add('', plot_dicts)
